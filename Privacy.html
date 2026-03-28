@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/ico/selectfavicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-purple: #667eea;
+            --secondary-purple: #764ba2;
+            --accent-gold: #ffd700;
+            --text-white: #ffffff;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-lighter: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+            color: var(--text-white);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            padding: 1.5rem 0;
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .logo-img {
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-btn {
+            padding: 0.75rem 2rem;
+            background: white;
+            color: var(--primary-purple);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 5rem 0 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .page-header p {
+            color: var(--text-lighter);
+            padding-bottom: 20px;
+        }
+
+        .privacy-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .privacy-content h2 {
+            color: var(--accent-gold);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .privacy-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .privacy-content p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .privacy-content ul {
+            margin: 1rem 0 1.5rem 2rem;
+            color: var(--text-lighter);
+        }
+
+        .privacy-content ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2.5rem; }
+            .privacy-content { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo-container">
+                <img src="~/app-assets/images/logo/novapay-logo.png" alt="NovaPay" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+            <a href="@Url.Action("SignIn", "Auth")" class="nav-btn">Sign In</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+            <p>
+                <strong>Service Scope Notice:</strong> NovaPay currently operates strictly within Nigeria and does not provide remittance or international money transfer services. Any references to such capabilities are for demonstration purposes only and are not live.
+            </p>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="privacy-content">
+            <h2>1. Introduction</h2>
+            <p>
+                NovaPay Systems ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform for bulk airtime processing and local disbursement services within Nigeria.
+
+            <h2>2. Information We Collect</h2>
+            <p>We collect information that you provide directly to us, including:</p>
+            <ul>
+                <li>Personal identification information (name, email address, phone number)</li>
+                <li>Business information (company name, address, tax identification)</li>
+                <li>Financial information (bank account details, transaction history)</li>
+                <li>Technical data (IP address, browser type, device information)</li>
+                <li>Usage data (how you interact with our services)</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Process and complete transactions</li>
+                <li>Provide customer support and respond to inquiries</li>
+                <li>Send administrative information and updates</li>
+                <li>Detect and prevent fraud and security issues</li>
+                <li>Comply with legal and regulatory requirements</li>
+                <li>Improve our services and user experience</li>
+                <li>Send marketing communications (with your consent)</li>
+            </ul>
+
+            <h2>4. Data Security</h2>
+            <p>
+                We implement industry-standard security measures to protect your personal information, including:
+            </p>
+            <ul>
+                <li>End-to-end encryption for all transactions</li>
+                <li>Industry-standard security practices</li>
+                <li>Regular security audits and assessments</li>
+                <li>Secure data storage and transmission protocols</li>
+                <li>Multi-factor authentication options</li>
+            </ul>
+
+            <h2>5. Information Sharing</h2>
+            <p>
+                We do not sell your personal information. We may share your information with:
+            </p>
+            <ul>
+                <li>Service providers who assist in our operations</li>
+                <li>Financial institutions to process transactions</li>
+                <li>Law enforcement when required by law</li>
+                <li>Business partners with your explicit consent</li>
+            </ul>
+
+            <h2>6. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Request correction of inaccurate data</li>
+                <li>Request deletion of your data</li>
+                <li>Object to processing of your data</li>
+                <li>Request data portability</li>
+                <li>Withdraw consent at any time</li>
+            </ul>
+
+            <h2>7. Data Retention</h2>
+            <p>
+                We retain your information for as long as necessary to provide our services and comply with legal obligations. Transaction records are typically retained for a minimum of 7 years as required by financial regulations.
+            </p>
+
+            <h2>8. Cookies and Tracking</h2>
+            <p>
+                We use cookies and similar tracking technologies to enhance your experience and analyze usage patterns. You can control cookie preferences through your browser settings.
+            </p>
+
+            <!-- <h2>9. International Transfers</h2>
+            <p>
+                Your information may be transferred and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your data during international transfers.
+            </p> -->
+
+            <h2>9. Children's Privacy</h2>
+            <p>
+                Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children.
+            </p>
+
+            <h2>10. Changes to This Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last Updated" date.
+            </p>
+
+            <h2>11. Contact Us</h2>
+            <p>
+                If you have questions or concerns about this Privacy Policy, please contact us at:
+            </p>
+            <p>
+                <strong>Email:</strong> payments@@novapayout.com<br/>
+                <strong>Address:</strong> 7, John Udoh Close, Peace Estate, Barracks Bus Stop, Ipaja, Lagos, Nigeria<br/>
+                <strong>Phone:</strong> +234 903 855 7476
+            </p>
+        </div>
+    </div>
+
+    <p style="margin-top:10px; padding-left: 30px; font-size:0.85rem; opacity:0.8;">
+        NovaPay operates only within Nigeria and does not offer remittance or international money transfer services.
+    </p>
+
+    <footer>
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year NovaPay Systems. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
